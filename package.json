@@ -1,0 +1,40 @@
+{
+  "name": "pokedex-clean-code",
+  "version": "1.0.0",
+  "description": "Pokédex interativa desenvolvida com clean code principles usando PokeAPI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"No tests specified yet\" && exit 0",
+    "lint": "echo \"No linter configured yet\" && exit 0"
+  },
+  "keywords": [
+    "pokemon", 
+    "pokedex", 
+    "clean-code", 
+    "javascript", 
+    "express", 
+    "bootstrap", 
+    "api",
+    "responsive"
+  ],
+  "author": "Clean Code Student",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/pokedex-clean-code.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

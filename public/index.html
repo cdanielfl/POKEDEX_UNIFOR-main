@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pokédex interativa com informações detalhadas sobre todos os Pokémons">
+    <meta name="keywords" content="pokemon, pokedex, nintendo, game, anime">
+    <meta name="author" content="Pokédex App">
+    <title>Pokédex - Explore o Mundo Pokémon</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" type="image/png">
+    
+    <!-- CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Preconexão para melhor performance -->
+    <link rel="preconnect" href="https://pokeapi.co">
+</head>
+<body>
+    <!-- Header com controles -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger" role="navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" aria-label="Pokédex - Página inicial">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Pokeball" width="30" height="30">
+                    Pokédex
+                </a>
+                <div class="form-check form-switch ms-auto">
+                    <input class="form-check-input" type="checkbox" id="themeToggle" onchange="toggleTheme()" aria-describedby="themeHelp">
+                    <label class="form-check-label text-white" for="themeToggle">Tema Escuro</label>
+                    <div id="themeHelp" class="visually-hidden">Alternar entre tema claro e escuro</div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="container mt-4">
+        <!-- Filtros e busca -->
+        <section class="search-section mb-4" aria-label="Filtros de busca">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="searchInput" class="visually-hidden">Buscar Pokémon por nome ou número</label>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Buscar Pokémon por nome ou número..." onkeyup="filterPokemons()" aria-describedby="searchHelp">
+                    <div id="searchHelp" class="form-text">Digite o nome ou número do Pokémon</div>
+                </div>
+                <div class="col-md-4">
+                    <label for="typeFilter" class="visually-hidden">Filtrar por tipo</label>
+                    <select class="form-select" id="typeFilter" onchange="filterPokemons()" aria-describedby="typeHelp">
+                        <option value="">Todos os tipos</option>
+                    </select>
+                    <div id="typeHelp" class="form-text">Selecione um tipo específico</div>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-danger w-100" onclick="clearFilters()" aria-label="Limpar todos os filtros">
+                        <span aria-hidden="true">🗑️</span> Limpar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Esqueleto de carregamento -->
+        <section id="loadingContainer" class="row g-3" aria-label="Carregando Pokémons" aria-live="polite">
+            <!-- Esqueletos serão inseridos aqui -->
+        </section>
+
+        <!-- Grade de Pokémons -->
+        <section id="pokemonGrid" class="row g-3" aria-label="Lista de Pokémons" role="grid">
+            <!-- Cartões serão inseridos aqui -->
+        </section>
+
+        <!-- Paginação -->
+        <nav class="pagination-container" aria-label="Navegação de páginas">
+            <div class="d-flex justify-content-center align-items-center mt-4 mb-4">
+                <button class="btn btn-danger me-2" id="prevBtn" onclick="previousPage()" aria-label="Página anterior">
+                    <span aria-hidden="true">←</span> Anterior
+                </button>
+                <span class="align-self-center mx-3" id="pageInfo" aria-live="polite">Página 1</span>
+                <button class="btn btn-danger ms-2" id="nextBtn" onclick="nextPage()" aria-label="Próxima página">
+                    Próximo <span aria-hidden="true">→</span>
+                </button>
+            </div>
+        </nav>
+    </main>
+
+    <!-- Modal de detalhes -->
+    <div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Detalhes do Pokémon</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar modal"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Detalhes serão inseridos aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light mt-5 py-4">
+        <div class="container text-center">
+            <p class="mb-2 text-muted">
+                <strong>Pokédex</strong> - Desenvolvido com ❤️ usando 
+                <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer" class="text-decoration-none">PokéAPI</a>
+            </p>
+            <p class="mb-0 small text-muted">
+                © 2024 - Todos os direitos reservados. Pokémon é uma marca registrada da Nintendo.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript Personalizado -->
+    <script src="app.js"></script>
+</body>
+</html>
+
